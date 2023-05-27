@@ -2,15 +2,16 @@
     <div class="container mt-5">
         <div class="row mb-5">
             <div class="col-md-12 text-center">
-                <h3><strong>Laravel LivewireCRUD with Bootstrap Modal</strong></h3>
+                <h1><strong>CRUD Laravel with Livewire Group 8</strong></h1>
+                <h3><strong>RUPP Student List</strong></h3>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h5 style="float: left;"><strong>All Students</strong></h5>
-                        <button class="btn btn-sm btn-primary" style="float: right;" data-toggle="modal" data-target="#addStudentModal">Add New Student</button>
+                    <div class="card-header ">
+                        <h5 style="float: left;"><strong>All students queue </strong></h5>
+                        <button class="btn btn-sm btn-success" style="float: right;" data-toggle="modal" data-target="#addStudentModal">Add New student</button>
                     </div>
                     <div class="card-body">
                         @if (session()->has('message'))
@@ -21,10 +22,10 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th style="text-align: center;">Action</th>
+                                    <th>Student Name</th>
+                                    <th>Email Address</th>
+                                    <th>Phone Number</th>
+                                    <th style="text-align: center;">Functionality</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,8 +37,8 @@
                                             <td>{{ $student->email }}</td>
                                             <td>{{ $student->phone }}</td>
                                             <td style="text-align: center;">
-                                                <button class="btn btn-sm btn-secondary" wire:click="viewStudentDetails({{ $student->id }})">View</button>
-                                                <button class="btn btn-sm btn-primary" wire:click="editStudents({{ $student->id }})">Edit</button>
+                                                <button class="btn btn-sm btn-warning" wire:click="viewStudentDetails({{ $student->id }})">Read</button>
+                                                <button class="btn btn-sm btn-primary" wire:click="editStudents({{ $student->id }})">Update</button>
                                                 <button class="btn btn-sm btn-danger" wire:click="deleteConfirmation({{ $student->id }})">Delete</button>
                                             </td>
                                         </tr>
@@ -69,7 +70,7 @@
 
                     <form wire:submit.prevent="storeStudentData">
                         <div class="form-group row">
-                            <label for="student_id" class="col-3">Student ID</label>
+                            <label for="student_id" class="col-3">User ID</label>
                             <div class="col-9">
                                 <input type="number" id="student_id" class="form-control" wire:model="student_id">
                                 @error('student_id')
@@ -111,7 +112,7 @@
                         <div class="form-group row">
                             <label for="" class="col-3"></label>
                             <div class="col-9">
-                                <button type="submit" class="btn btn-sm btn-primary">Add Student</button>
+                                <button type="submit" class="btn btn-sm btn-primary">Add Student to the list</button>
                             </div>
                         </div>
                     </form>
@@ -124,7 +125,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit Student</h5>
+                    <h5 class="modal-title">Update Student Info</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" wire:click="close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -175,7 +176,7 @@
                         <div class="form-group row">
                             <label for="" class="col-3"></label>
                             <div class="col-9">
-                                <button type="submit" class="btn btn-sm btn-primary">Edit Student</button>
+                                <button type="submit" class="btn btn-sm btn-primary">Save</button>
                             </div>
                         </div>
                     </form>
@@ -188,17 +189,17 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Delete Confirmation</h5>
+                    <h5 class="modal-title">Confirmation of deletion</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body pt-4 pb-4">
-                    <h6>Are you sure? You want to delete this student data!</h6>
+                    <h6>Are you sure that you want to delete this student's data?</h6>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-sm btn-primary" wire:click="cancel()" data-dismiss="modal" aria-label="Close">Cancel</button>
-                    <button class="btn btn-sm btn-danger" wire:click="deleteStudentData()">Yes! Delete</button>
+                    <button class="btn btn-sm btn-danger" wire:click="deleteStudentData()">Confirm</button>
                 </div>
             </div>
         </div>
